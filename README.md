@@ -17,45 +17,9 @@ The system addresses issues across model implementation, training behavior, data
 4. **Reevaluate the investigation.** The orchestrator reviews the original issue alongside all accumulated findings. It can conclude the investigation, call an additional specialist, or create a revised plan with a focused objective derived from the evidence.
 5. **Finalize the diagnosis.** The finalizer combines the findings and preserves the collected evidence. When synthesis is enabled, it combines specialist findings into one answer. A problem identified by one specialist is treated as a possible cause of the reported issue, not a confirmed root cause, unless the evidence collected during the investigation supports that connection.
 
-```mermaid
-flowchart TD
-    I[User issue and project path] --> R
-
-    subgraph O["Orchestrator"]
-        R[Route issue]
-        D[Direct answer]
-        E[Reevaluate accumulated findings]
-        P[Create revised investigation plan]
-        U[Mark unresolved]
-        F[Finalize answer and preserve evidence]
-
-        R -->|Conceptual question| D
-        D --> F
-        E -->|Enough evidence| F
-        E -->|Strategy must change| P
-        E -->|All strategies exhausted| U
-        P -->|No executable revised plan| U
-        U --> F
-    end
-
-    R -->|Select one or both| X
-    E -->|Continue investigation| X
-    P -->|Execute revised plan| X
-
-    subgraph S["Specialist investigation"]
-        X[Dispatch selected specialists]
-        X --> M[Model and code agent]
-        X --> V[Data and evaluation agent]
-        M --> T
-        V --> T
-        T[Tools · list project files and read selected files]
-        T --> A[Selected agents analyze file contents]
-        A --> B[Structured findings · status, summary, evidence]
-    end
-
-    B --> E
-    F --> Z[Final diagnosis, evidence, and status]
-```
+<p align="center">
+  <img src="docs/architecture.svg" alt="System Architecture" width="900">
+</p>
 
 ## Specialist Agent Responsibilities
 
