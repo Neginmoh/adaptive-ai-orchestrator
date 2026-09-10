@@ -82,8 +82,8 @@ The current implementation provides two specialist domains and executes selected
 Use Python 3.10 or later and a running Ollama service with the LLM specified in `config.py` available. From an activated Python environment:
 
 ```bash
-git clone https://github.com/Neginmoh/adaptive-ml-orchestrator.git
-cd adaptive-ml-orchestrator
+git clone https://github.com/Neginmoh/adaptive-ai-orchestrator.git
+cd adaptive-ai-orchestrator
 python -m pip install -r requirements.txt
 ```
 
